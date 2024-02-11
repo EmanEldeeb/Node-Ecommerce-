@@ -17,3 +17,13 @@ exports.collectProductData = (req, res) => {
   newProduct.save();
   res.redirect("/");
 };
+
+exports.getAdminProducts = (req, res) => {
+  productClass.fetchAll((products) => {
+    res.render("admin/admin-productList", {
+      pageTitle: "Admin Products",
+      path: "/admin-products",
+      prods: products,
+    });
+  });
+};
